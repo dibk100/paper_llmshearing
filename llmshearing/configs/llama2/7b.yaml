@@ -96,11 +96,11 @@ algorithms:
 max_duration: 800ba # ~ 134B tokens
 eval_interval: 100ba
 eval_subset_num_batches: 1000
-global_train_batch_size: 8
+global_train_batch_size: 2
 
 # System
 seed: ${global_seed}
-device_eval_batch_size: 8 
+device_eval_batch_size: 2
 device_train_microbatch_size: 2
 precision: amp_bf16
 

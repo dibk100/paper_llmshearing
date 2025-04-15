@@ -288,6 +288,7 @@ def main(cfg):
         autoresume=cfg.autoresume,
     )
     
+    torch.cuda.empty_cache()
     # a setup for one hour training
     if is_one_hour(cfg.run_name):
         for callback in trainer.state.callbacks:
@@ -299,12 +300,14 @@ def main(cfg):
         from llmshearing.datasets.state import _dataset_state_dict
         trainer.state._dataset_state_dict = MethodType(_dataset_state_dict, trainer.state)
         
+    torch.cuda.empty_cache()
     print('Logging config...')
     log_config(cfg)
 
     if cfg.get('eval_first', False):
         trainer.eval()
 
+    torch.cuda.empty_cache()
     print('Starting training...')
     trainer.fit()
 

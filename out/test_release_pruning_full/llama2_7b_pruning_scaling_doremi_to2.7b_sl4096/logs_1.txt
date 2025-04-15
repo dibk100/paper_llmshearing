@@ -1,0 +1,566 @@
+[stdout]: Initializing model...
+[stdout]: Tried to build Llama model with cfg.name=mosaic_llama2_7b
+[stdout]: ********** Initializing L0 Module **********
+[stdout]: ***** head *****
+[stdout]: z.shape torch.Size([32, 32])
+[stdout]: size 32
+[stdout]: ***** intermediate *****
+[stdout]: z.shape torch.Size([32, 11008])
+[stdout]: size 11008
+[stdout]: ***** layer *****
+[stdout]: z.shape torch.Size([32])
+[stdout]: size 32
+[stdout]: ***** hidden *****
+[stdout]: z.shape torch.Size([4096])
+[stdout]: size 4096
+[stdout]: prunable model size: 6476005376
+[stdout]: ComposerMosaicLlama(
+[stdout]:   (model): LlamaModel(
+[stdout]:     (l0_module): L0Module(
+[stdout]:       (masks): ModuleDict(
+[stdout]:         (head): Mask()
+[stdout]:         (intermediate): Mask()
+[stdout]:         (layer): Mask()
+[stdout]:         (hidden): Mask()
+[stdout]:       )
+[stdout]:       (lambdas): ParameterDict(
+[stdout]:           (lambda_1): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_1_head): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_1_hidden): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_1_intermediate): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_1_layer): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_2): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_2_head): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_2_hidden): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_2_intermediate): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:           (lambda_2_layer): Parameter containing: [torch.meta.FloatTensor of size ]
+[stdout]:       )
+[stdout]:     )
+[stdout]:     (transformer): ModuleDict(
+[stdout]:       (wte): Embedding(32000, 4096)
+[stdout]:       (blocks): ModuleList(
+[stdout]:         (0-31): 32 x LlamaBlock(
+[stdout]:           (ln_1): LlamaRMSNorm()
+[stdout]:           (attn): LlamaAttention(
+[stdout]:             (wq): Linear(in_features=4096, out_features=4096, bias=False)
+[stdout]:             (wk): Linear(in_features=4096, out_features=4096, bias=False)
+[stdout]:             (wv): Linear(in_features=4096, out_features=4096, bias=False)
+[stdout]:             (out_proj): Linear(in_features=4096, out_features=4096, bias=False)
+[stdout]:             (rotary_emb): LlamaRotaryEmbedding()
+[stdout]:           )
+[stdout]:           (ln_2): LlamaRMSNorm()
+[stdout]:           (mlp): LlamaMLP(
+[stdout]:             (gate_proj): Linear(in_features=4096, out_features=11008, bias=False)
+[stdout]:             (down_proj): Linear(in_features=11008, out_features=4096, bias=False)
+[stdout]:             (up_proj): Linear(in_features=4096, out_features=11008, bias=False)
+[stdout]:           )
+[stdout]:         )
+[stdout]:       )
+[stdout]:       (ln_f): LlamaRMSNorm()
+[stdout]:       (output): Linear(in_features=4096, out_features=32000, bias=False)
+[stdout]:     )
+[stdout]:   )
+[stdout]: )
+[stdout]: {'start_sparsity': 0.0, 'target_sparsity': 0.5, 'pruning_modules': ['head', 'intermediate', 'layer', 'hidden'], 'lagrangian_warmup_steps': '640ba', 'target_model': {'d_model': 2560, 'n_layers': 32, 'n_heads': 20, 'intermediate_size': 6912, 'vocab_size': 32000}, 'eval_target_model': False}
+[stdout]: Loaded model from path:  /home/dibaeck/sketch/LLM-Shearing/llmshearing/models/Llama-2-7b-composer/state_dict.pt
+[stdout]: Model load state dict result:  _IncompatibleKeys(missing_keys=['model.l0_module.masks.head.z_loga', 'model.l0_module.masks.intermediate.z_loga', 'model.l0_module.masks.layer.z_loga', 'model.l0_module.masks.hidden.z_loga', 'model.l0_module.lambdas.lambda_1', 'model.l0_module.lambdas.lambda_1_head', 'model.l0_module.lambdas.lambda_1_hidden', 'model.l0_module.lambdas.lambda_1_intermediate', 'model.l0_module.lambdas.lambda_1_layer', 'model.l0_module.lambdas.lambda_2', 'model.l0_module.lambdas.lambda_2_head', 'model.l0_module.lambdas.lambda_2_hidden', 'model.l0_module.lambdas.lambda_2_intermediate', 'model.l0_module.lambdas.lambda_2_layer', 'model.transformer.blocks.0.attn.rotary_emb.inv_freq', 'model.transformer.blocks.1.attn.rotary_emb.inv_freq', 'model.transformer.blocks.2.attn.rotary_emb.inv_freq', 'model.transformer.blocks.3.attn.rotary_emb.inv_freq', 'model.transformer.blocks.4.attn.rotary_emb.inv_freq', 'model.transformer.blocks.5.attn.rotary_emb.inv_freq', 'model.transformer.blocks.6.attn.rotary_emb.inv_freq', 'model.transformer.blocks.7.attn.rotary_emb.inv_freq', 'model.transformer.blocks.8.attn.rotary_emb.inv_freq', 'model.transformer.blocks.9.attn.rotary_emb.inv_freq', 'model.transformer.blocks.10.attn.rotary_emb.inv_freq', 'model.transformer.blocks.11.attn.rotary_emb.inv_freq', 'model.transformer.blocks.12.attn.rotary_emb.inv_freq', 'model.transformer.blocks.13.attn.rotary_emb.inv_freq', 'model.transformer.blocks.14.attn.rotary_emb.inv_freq', 'model.transformer.blocks.15.attn.rotary_emb.inv_freq', 'model.transformer.blocks.16.attn.rotary_emb.inv_freq', 'model.transformer.blocks.17.attn.rotary_emb.inv_freq', 'model.transformer.blocks.18.attn.rotary_emb.inv_freq', 'model.transformer.blocks.19.attn.rotary_emb.inv_freq', 'model.transformer.blocks.20.attn.rotary_emb.inv_freq', 'model.transformer.blocks.21.attn.rotary_emb.inv_freq', 'model.transformer.blocks.22.attn.rotary_emb.inv_freq', 'model.transformer.blocks.23.attn.rotary_emb.inv_freq', 'model.transformer.blocks.24.attn.rotary_emb.inv_freq', 'model.transformer.blocks.25.attn.rotary_emb.inv_freq', 'model.transformer.blocks.26.attn.rotary_emb.inv_freq', 'model.transformer.blocks.27.attn.rotary_emb.inv_freq', 'model.transformer.blocks.28.attn.rotary_emb.inv_freq', 'model.transformer.blocks.29.attn.rotary_emb.inv_freq', 'model.transformer.blocks.30.attn.rotary_emb.inv_freq', 'model.transformer.blocks.31.attn.rotary_emb.inv_freq'], unexpected_keys=[])
+[stdout]: Having missing rotary_emb.inv_freq keys is normal
+[stdout]: cfg.n_params=6.74e+09
+[stdout]: model.num_fwd_flops=6.40e+13
+[stdout]: Building train loader...
+[stdout]: Building eval loader...
+[stdout]: Group 0: 291 tensors 6738415616 params 1.00e-04 lr
+[stdout]: Group 1: 4 tensors 357408 params 1.00e+00 lr
+[stdout]: Group 2: 10 tensors 10 params -1.00e+00 lr
+[stdout]: Target loss: [1.8712, 0.6883, 2.0325, 1.5353, 1.6297, 1.356, 2.0328]
+[stdout]: Building trainer...
+[stderr]: /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/callbacks/speed_monitor.py:120: UserWarning: gpu_flop count not found for None with precision: amp_bf16; MFU cannot be calculated and reported. gpu_flops_available can be manuallyoverridden by setting gpu_flops_available in SpeedMonitor.
+[stderr]:   warnings.warn(
+[stderr]: /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/callbacks/memory_monitor.py:94: UserWarning: The memory monitor only works on CUDA devices, but the model is on meta.
+[stderr]:   warnings.warn(f'The memory monitor only works on CUDA devices, but the model is on {model_device.type}.')
+[trace]: algorithm_traces/GradientClipping/Event.INIT:1
+[hyperparameter]: num_nodes: 1 
+[hyperparameter]: num_gpus_per_node: 4 
+[hyperparameter]: node_name: "unknown because NODENAME environment variable not set" 
+[hyperparameter]: rank_zero_seed: 17 
+[stdout]: Logging config...
+[stdout]: data_local: /home/dibaeck/sketch/LLM-Shearing/llmshearing/data/mds_sample_redpajama/for_prune
+[stdout]: data_remote: null
+[stdout]: tokenizer_name: /home/dibaeck/sketch/LLM-Shearing/llmshearing/LLaMA2/hf-7B
+[stdout]: max_seq_len: 4096
+[stdout]: global_seed: 17
+[stdout]: run_name: llama2_7b_pruning_scaling_doremi_to2.[stdout]: Logging config...
+[stdout]: data_local: /home/dibaeck/sketch/LLM-Shearing/llmshearing/data/mds_sample_redpajama/for_prune
+[stdout]: data_remote: null
+[stdout]: tokenizer_name: /home/dibaeck/sketch/LLM-Shearing/llmshearing/LLaMA2/hf-7B
+[stdout]: max_seq_len: 4096
+[stdout]: global_seed: 17
+[stdout]: run_name: llama2_7b_pruning_scaling_doremi_to2.7b_sl4096
+[stdout]: model:
+[stdout]:   name: mosaic_llama2_7b
+[stdout]:   path: /home/dibaeck/sketch/LLM-Shearing/llmshearing/models/Llama-2-7b-composer/state_dict.pt
+[stdout]:   init_device: meta
+[stdout]:   tokenizer_name: ${tokenizer_name}
+[stdout]:   d_model: 4096
+[stdout]:   n_heads: 32
+[stdout]:   n_layers: 32
+[stdout]:   intermediate_size: 11008
+[stdout]:   max_seq_len: ${max_seq_len}
+[stdout]:   vocab_size: 32000
+[stdout]:   init_std: 0.02
+[stdout]:   attn_pdrop: 0.0
+[stdout]:   resid_pdrop: 0.0
+[stdout]:   emb_pdrop: 0.0
+[stdout]:   attn_impl: flash
+[stdout]:   rms_norm_eps: 1.0e-05
+[stdout]:   l0_module:
+[stdout]:     start_sparsity: 0.0
+[stdout]:     target_sparsity: 0.5
+[stdout]:     pruning_modules:
+[stdout]:     - head
+[stdout]:     - intermediate
+[stdout]:     - layer
+[stdout]:     - hidden
+[stdout]:     lagrangian_warmup_steps: 640ba
+[stdout]:     target_model:
+[stdout]:       d_model: 2560
+[stdout]:       n_layers: 32
+[stdout]:       n_heads: 20
+[stdout]:       intermediate_size: 6912
+[stdout]:       vocab_size: 32000
+[stdout]:     eval_target_model: false
+[stdout]:   set_names:
+[stdout]:   - cc
+[stdout]:   - github
+[stdout]:   - book
+[stdout]:   - stackexchange
+[stdout]:   - wiki
+[stdout]:   - arxiv
+[stdout]:   - c4-rp
+[stdout]: tokenizer:
+[stdout]:   type: hftokenizer
+[stdout]:   args:
+[stdout]:     tokenizer_name: ${tokenizer_name}
+[stdout]:     max_seq_len: ${max_seq_len}
+[stdout]: train_loader:
+[stdout]:   name: text
+[stdout]:   dataset:
+[stdout]:     local: ${data_local}
+[stdout]:     remote: ${data_remote}
+[stdout]:     split: train_small
+[stdout]:     shuffle: true
+[stdout]:     tokenizer_name: ${tokenizer_name}
+[stdout]:     max_seq_len: ${max_seq_len}
+[stdout]:     shuffle_seed: ${global_seed}
+[stdout]:     is_uint16: true
+[stdout]:   drop_last: true
+[stdout]:   num_workers: 0
+[stdout]:   prefetch_factor: null
+[stdout]:   persistent_workers: false
+[stdout]: eval_loader:
+[stdout]:   name: text
+[stdout]:   dataset:
+[stdout]:     local: ${data_local}
+[stdout]:     remote: ${data_remote}
+[stdout]:     split: eval_merge
+[stdout]:     shuffle: false
+[stdout]:     tokenizer_name: ${tokenizer_name}
+[stdout]:     max_seq_len: ${max_seq_len}
+[stdout]:     shuffle_seed: ${global_seed}
+[stdout]:     is_uint16: true
+[stdout]:   drop_last: false
+[stdout]:   num_workers: 8
+[stdout]: scheduler:
+[stdout]:   t_warmup: 320ba
+[stdout]:   alpha_f: 0.1
+[stdout]: optimizer:
+[stdout]:   lr: 0.0001
+[stdout]:   betas:
+[stdout]:   - 0.9
+[stdout]:   - 0.95
+[stdout]:   eps: 1.0e-08
+[stdout]:   weight_decay: 0.0
+[stdout]: algorithms:
+[stdout]:   gradient_clipping:
+[stdout]:     clipping_type: norm
+[stdout]:     clipping_threshold: 1.0
+[stdout]: max_duration: 3200ba
+[stdout]: eval_interval: 50ba
+[stdout]: eval_subset_num_batches: 1000
+[stdout]: global_train_batch_size: 32
+[stdout]: seed: ${global_seed}
+[stdout]: device_eval_batch_size: 8
+[stdout]: device_train_microbatch_size: 4
+[stdout]: precision: amp_bf16
+[stdout]: fsdp_config:
+[stdout]:   sharding_strategy: FULL_SHARD
+[stdout]:   mixed_precision: DEFAULT
+[stdout]:   activation_checkpointing: true
+[stdout]:   activation_cpu_offload: true
+[stdout]:   verbose: false
+[stdout]: progress_bar: false
+[stdout]: log_to_console: true
+[stdout]: console_log_interval: 1ba
+[stdout]: callbacks:
+[stdout]:   speed_monitor:
+[stdout]:     window_size: 10
+[stdout]:   memory_monitor: {}
+[stdout]:   lr_monitor: {}
+[stdout]: loggers:
+[stdout]:   wandb:
+[stdout]:     project: pruning
+[stdout]:     name: ${run_name}
+[stdout]:     entity: pruning
+[stdout]:     init_kwargs:
+[stdout]:       mode: offline
+[stdout]:       dir: /home/dibaeck/sketch/LLM-Shearing/out/test_release_pruning_full/llama2_7b_pruning_scaling_doremi_to2.7b_sl4096
+[stdout]:       project: pruning
+[stdout]:       name: llama2_7b_pruning_scaling_doremi_to2.7b_sl4096
+[stdout]:       entity: pruning
+[stdout]: save_interval: 3200ba
+[stdout]: save_folder: /home/dibaeck/sketch/LLM-Shearing/out/test_release_pruning_f[metric][batch=0]: time/epoch: 0 
+[metric][batch=0]: time/batch: 0 
+[metric][batch=0]: time/sample: 0 
+[metric][batch=0]: time/batch_in_epoch: 0 
+[metric][batch=0]: time/sample_in_epoch: 0 
+[metric][batch=0]: time/token: 0 
+[metric][batch=0]: time/token_in_epoch: 0 
+[stderr]: ╭─────────────────────────────── Traceback (most recent call last) ────────────────────────────────╮
+[stderr]: │ /home/dibaeck/sketch/LLM-Shearing/llmshearing/train.py:328 in <module>                           │
+[stderr]: │                                                                                                  │
+[stderr]: │   325 │   os.makedirs(save_dir, exist_ok=True)                                                   │
+[stderr]: │   326 │   torch.save(cfg, save_dir + "/config.pt")                                               │
+[stderr]: │   327 │                                                                                          │
+[stderr]: │ ❱ 328 │   main(cfg)                                                                              │
+[stderr]: │   329                                                                                            │
+[stderr]: │   330                                                                                            │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/LLM-Shearing/llmshearing/train.py:312 in main                               │
+[stderr]: │                                                                                                  │
+[stderr]: │   309 │                                                                                          │
+[stderr]: │   310 │   torch.cuda.empty_cache()                                                               │
+[stderr]: │   311 │   print('Starting training...')                                                          │
+[stderr]: │ ❱ 312 │   trainer.fit()                                                                          │
+[stderr]: │   313 │                                                                                          │
+[stderr]: │   314 │   print('Done.')                                                                         │
+[stderr]: │   315                                                                                            │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/trainer/traine │
+[stderr]: │ r.py:1876 in fit                                                                                 │
+[stderr]: │                                                                                                  │
+[stderr]: │   1873 │   │   │   self.state.scaler = ClosureGradScaler() if self._use_closures() else GradSca  │
+[stderr]: │   1874 │   │                                                                                     │
+[stderr]: │   1875 │   │   self.first_batch_complete = False                                                 │
+[stderr]: │ ❱ 1876 │   │   self._train_loop()                                                                │
+[stderr]: │   1877 │                                                                                         │
+[stderr]: │   1878 │   def close(self):                                                                      │
+[stderr]: │   1879 │   │   """Shutdown the trainer.                                                          │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/trainer/traine │
+[stderr]: │ r.py:2051 in _train_loop                                                                         │
+[stderr]: │                                                                                                  │
+[stderr]: │   2048 │   │   │   │   │   │   self.logger.log_metrics({'time/token': self.state.timestamp.toke  │
+[stderr]: │   2049 │   │   │   │   │   │   self.logger.log_metrics({'time/token_in_epoch': self.state.times  │
+[stderr]: │   2050 │   │   │   │   │                                                                         │
+[stderr]: │ ❱ 2051 │   │   │   │   │   total_loss_dict = self._train_batch(use_grad_scaling)                 │
+[stderr]: │   2052 │   │   │   │   │                                                                         │
+[stderr]: │   2053 │   │   │   │   │   if use_grad_scaling:                                                  │
+[stderr]: │   2054 │   │   │   │   │   │   self.state.scaler.update()                                        │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/trainer/traine │
+[stderr]: │ r.py:2236 in _train_batch                                                                        │
+[stderr]: │                                                                                                  │
+[stderr]: │   2233 │   │   │   │   │   │   │   │   │   │   │   │      closure=lambda loss_dict=total_loss_d  │
+[stderr]: │   2234 │   │   │   │   │   │   │   │   │   │   │   │      _train_microbatches(microbatches, los  │
+[stderr]: │   2235 │   │   │   │   │   │   else:                                                             │
+[stderr]: │ ❱ 2236 │   │   │   │   │   │   │   optimizer.step(closure=lambda loss_dict=total_loss_dict, **k  │
+[stderr]: │   2237 │   │   │   │   │   │   │   │   microbatches, loss_dict, **kwargs).item())                │
+[stderr]: │   2238 │   │   │   │   else:                                                                     │
+[stderr]: │   2239 │   │   │   │   │   self._train_microbatches(microbatches, total_loss_dict)               │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/optim/lr_schedule │
+[stderr]: │ r.py:69 in wrapper                                                                               │
+[stderr]: │                                                                                                  │
+[stderr]: │     66 │   │   │   │   instance = instance_ref()                                                 │
+[stderr]: │     67 │   │   │   │   instance._step_count += 1                                                 │
+[stderr]: │     68 │   │   │   │   wrapped = func.__get__(instance, cls)                                     │
+[stderr]: │ ❱   69 │   │   │   │   return wrapped(*args, **kwargs)                                           │
+[stderr]: │     70 │   │   │                                                                                 │
+[stderr]: │     71 │   │   │   # Note that the returned function here is no longer a bound method,           │
+[stderr]: │     72 │   │   │   # so attributes like `__func__` and `__self__` no longer exist.               │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/optim/optimizer.p │
+[stderr]: │ y:280 in wrapper                                                                                 │
+[stderr]: │                                                                                                  │
+[stderr]: │   277 │   │   │   │   │   │   │   raise RuntimeError(f"{func} must return None or a tuple of (   │
+[stderr]: │   278 │   │   │   │   │   │   │   │   │   │   │      f"but got {result}.")                       │
+[stderr]: │   279 │   │   │   │                                                                              │
+[stderr]: │ ❱ 280 │   │   │   │   out = func(*args, **kwargs)                                                │
+[stderr]: │   281 │   │   │   │   self._optimizer_step_code()                                                │
+[stderr]: │   282 │   │   │   │                                                                              │
+[stderr]: │   283 │   │   │   │   # call optimizer step post hooks                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/utils/_contextlib │
+[stderr]: │ .py:115 in decorate_context                                                                      │
+[stderr]: │                                                                                                  │
+[stderr]: │   112 │   @functools.wraps(func)                                                                 │
+[stderr]: │   113 │   def decorate_context(*args, **kwargs):                                                 │
+[stderr]: │   114 │   │   with ctx_factory():                                                                │
+[stderr]: │ ❱ 115 │   │   │   return func(*args, **kwargs)                                                   │
+[stderr]: │   116 │                                                                                          │
+[stderr]: │   117 │   return decorate_context                                                                │
+[stderr]: │   118                                                                                            │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/optim/decouple │
+[stderr]: │ d_weight_decay.py:276 in step                                                                    │
+[stderr]: │                                                                                                  │
+[stderr]: │   273 │   │   loss = None                                                                        │
+[stderr]: │   274 │   │   if closure is not None:                                                            │
+[stderr]: │   275 │   │   │   with torch.enable_grad():                                                      │
+[stderr]: │ ❱ 276 │   │   │   │   loss = closure()                                                           │
+[stderr]: │   277 │   │                                                                                      │
+[stderr]: │   278 │   │   for group in self.param_groups:                                                    │
+[stderr]: │   279 │   │   │   params_with_grad = []                                                          │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/trainer/traine │
+[stderr]: │ r.py:2236 in <lambda>                                                                            │
+[stderr]: │                                                                                                  │
+[stderr]: │   2233 │   │   │   │   │   │   │   │   │   │   │   │      closure=lambda loss_dict=total_loss_d  │
+[stderr]: │   2234 │   │   │   │   │   │   │   │   │   │   │   │      _train_microbatches(microbatches, los  │
+[stderr]: │   2235 │   │   │   │   │   │   else:                                                             │
+[stderr]: │ ❱ 2236 │   │   │   │   │   │   │   optimizer.step(closure=lambda loss_dict=total_loss_dict, **k  │
+[stderr]: │   2237 │   │   │   │   │   │   │   │   microbatches, loss_dict, **kwargs).item())                │
+[stderr]: │   2238 │   │   │   │   else:                                                                     │
+[stderr]: │   2239 │   │   │   │   │   self._train_microbatches(microbatches, total_loss_dict)               │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/trainer/traine │
+[stderr]: │ r.py:2339 in _train_microbatches                                                                 │
+[stderr]: │                                                                                                  │
+[stderr]: │   2336 │   │   │                                                                                 │
+[stderr]: │   2337 │   │   │   for microbatch_idx, self.state.batch in enumerate(microbatches):              │
+[stderr]: │   2338 │   │   │   │   is_final_microbatch = microbatch_idx + 1 == len(microbatches)             │
+[stderr]: │ ❱ 2339 │   │   │   │   microbatch_loss_dict = self._train_microbatch(use_grad_scaling, current_  │
+[stderr]: │   2340 │   │   │   │                                                                             │
+[stderr]: │   2341 │   │   │   │   # Aggregate each loss in microbatch_loss_dict into total_loss_dict        │
+[stderr]: │   2342 │   │   │   │   for k, microbatch_loss in microbatch_loss_dict.items():                   │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/composer/trainer/traine │
+[stderr]: │ r.py:2403 in _train_microbatch                                                                   │
+[stderr]: │                                                                                                  │
+[stderr]: │   2400 │   │   │                                                                                 │
+[stderr]: │   2401 │   │   │   with _get_precision_context(self.state.precision, self.state.precision_confi  │
+[stderr]: │   2402 │   │   │   │   │   │   │   │   │   │   self.state.deepspeed_enabled):                    │
+[stderr]: │ ❱ 2403 │   │   │   │   self.state.outputs = self.state.model(self.state.batch)                   │
+[stderr]: │   2404 │   │   │                                                                                 │
+[stderr]: │   2405 │   │   │   self.engine.run_event(Event.AFTER_FORWARD)                                    │
+[stderr]: │   2406                                                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/nn/modules/module │
+[stderr]: │ .py:1501 in _call_impl                                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │   1498 │   │   if not (self._backward_hooks or self._backward_pre_hooks or self._forward_hooks   │
+[stderr]: │   1499 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hooks                   │
+[stderr]: │   1500 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks):                   │
+[stderr]: │ ❱ 1501 │   │   │   return forward_call(*args, **kwargs)                                          │
+[stderr]: │   1502 │   │   # Do not call functions when jit is used                                          │
+[stderr]: │   1503 │   │   full_backward_hooks, non_full_backward_hooks = [], []                             │
+[stderr]: │   1504 │   │   backward_pre_hooks = []                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/LLM-Shearing/llmshearing/models/composer_llama.py:92 in forward             │
+[stderr]: │                                                                                                  │
+[stderr]: │    89 │   │   if pruned_steps is not None:                                                       │
+[stderr]: │    90 │   │   │   pruned_steps = pruned_steps[0].item()                                          │
+[stderr]: │    91 │   │   zs = {key: batch[key] for key in batch if "_z" in key}                             │
+[stderr]: │ ❱  92 │   │   model_output = self.model(input_ids=input_ids, key_padding_mask=key_padding_mask   │
+[stderr]: │    93 │   │   return model_output                                                                │
+[stderr]: │    94 │                                                                                          │
+[stderr]: │    95 │   def eval_forward(self, batch, outputs=None):                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/nn/modules/module │
+[stderr]: │ .py:1501 in _call_impl                                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │   1498 │   │   if not (self._backward_hooks or self._backward_pre_hooks or self._forward_hooks   │
+[stderr]: │   1499 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hooks                   │
+[stderr]: │   1500 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks):                   │
+[stderr]: │ ❱ 1501 │   │   │   return forward_call(*args, **kwargs)                                          │
+[stderr]: │   1502 │   │   # Do not call functions when jit is used                                          │
+[stderr]: │   1503 │   │   full_backward_hooks, non_full_backward_hooks = [], []                             │
+[stderr]: │   1504 │   │   backward_pre_hooks = []                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/distributed/fsdp/ │
+[stderr]: │ fully_sharded_data_parallel.py:748 in forward                                                    │
+[stderr]: │                                                                                                  │
+[stderr]: │    745 │   │   │   │   │   "Expected `FlatParameter` to be on the compute device "               │
+[stderr]: │    746 │   │   │   │   │   f"{self.compute_device} but got {handle.flat_param.device}",          │
+[stderr]: │    747 │   │   │   │   )                                                                         │
+[stderr]: │ ❱  748 │   │   │   output = self._fsdp_wrapped_module(*args, **kwargs)                           │
+[stderr]: │    749 │   │   │   return _post_forward(self, self._handles, reshard_fn, self, unused, output)   │
+[stderr]: │    750 │                                                                                         │
+[stderr]: │    751 │   @staticmethod                                                                         │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/nn/modules/module │
+[stderr]: │ .py:1501 in _call_impl                                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │   1498 │   │   if not (self._backward_hooks or self._backward_pre_hooks or self._forward_hooks   │
+[stderr]: │   1499 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hooks                   │
+[stderr]: │   1500 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks):                   │
+[stderr]: │ ❱ 1501 │   │   │   return forward_call(*args, **kwargs)                                          │
+[stderr]: │   1502 │   │   # Do not call functions when jit is used                                          │
+[stderr]: │   1503 │   │   full_backward_hooks, non_full_backward_hooks = [], []                             │
+[stderr]: │   1504 │   │   backward_pre_hooks = []                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/LLM-Shearing/llmshearing/models/composer_llama.py:330 in forward            │
+[stderr]: │                                                                                                  │
+[stderr]: │   327 │   │   logits = self.transformer.output(x)                                                │
+[stderr]: │   328 │   │                                                                                      │
+[stderr]: │   329 │   │   if self.l0_module is not None:                                                     │
+[stderr]: │ ❱ 330 │   │   │   l0_output = self.l0_module(calculate_lagrangian=True, pruned_steps=pruned_st   │
+[stderr]: │   331 │   │                                                                                      │
+[stderr]: │   332 │   │   return {"logits": logits, "l0_output": l0_output, "zs": zs}                        │
+[stderr]: │   333                                                                                            │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/nn/modules/module │
+[stderr]: │ .py:1501 in _call_impl                                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │   1498 │   │   if not (self._backward_hooks or self._backward_pre_hooks or self._forward_hooks   │
+[stderr]: │   1499 │   │   │   │   or _global_backward_pre_hooks or _global_backward_hooks                   │
+[stderr]: │   1500 │   │   │   │   or _global_forward_hooks or _global_forward_pre_hooks):                   │
+[stderr]: │ ❱ 1501 │   │   │   return forward_call(*args, **kwargs)                                          │
+[stderr]: │   1502 │   │   # Do not call functions when jit is used                                          │
+[stderr]: │   1503 │   │   full_backward_hooks, non_full_backward_hooks = [], []                             │
+[stderr]: │   1504 │   │   backward_pre_hooks = []                                                           │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/LLM-Shearing/llmshearing/models/l0_module.py:511 in forward                 │
+[stderr]: │                                                                                                  │
+[stderr]: │   508 │   def forward(self, calculate_lagrangian: bool = False, pruned_steps: int = 0):          │
+[stderr]: │   509 │   │   self.constrain_parameters()                                                        │
+[stderr]: │   510 │   │   if calculate_lagrangian:                                                           │
+[stderr]: │ ❱ 511 │   │   │   return self.lagrangian_regularization(pruned_steps)                            │
+[stderr]: │   512 │   │                                                                                      │
+[stderr]: │   513 │   │   zs = {f"{pruning_module}_z": [] for pruning_module in self.pruning_modules}        │
+[stderr]: │   514                                                                                            │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/LLM-Shearing/llmshearing/models/l0_module.py:483 in                         │
+[stderr]: │ lagrangian_regularization                                                                        │
+[stderr]: │                                                                                                  │
+[stderr]: │   480 │   │                                                                                      │
+[stderr]: │   481 │   │   target_sparsity = self.get_target_sparsity(pruned_steps, self.target_sparsity)     │
+[stderr]: │   482 │   │   expected_scores, expected_sparsitys = self.calculate_expected_score_sparsity()     │
+[stderr]: │ ❱ 483 │   │   expected_size = self.get_expected_num_params(expected_scores) #! calculate \bar    │
+[stderr]: │   484 │   │   expected_sparsity = 1 - expected_size / self.prunable_model_size                   │
+[stderr]: │   485 │   │                                                                                      │
+[stderr]: │   486 │   │   return_v = {}                                                                      │
+[stderr]: │                                                                                                  │
+[stderr]: │ /home/dibaeck/sketch/LLM-Shearing/llmshearing/models/l0_module.py:458 in get_expected_num_params │
+[stderr]: │                                                                                                  │
+[stderr]: │   455 │   │   │                                                                                  │
+[stderr]: │   456 │   │   │   if qk_score is None:                                                           │
+[stderr]: │   457 │   │   │   │   num_parameters += torch.outer(hidden_score, head_score.reshape(-1)).sum(   │
+[stderr]: │ ❱ 458 │   │   │   │   num_parameters += torch.outer(hidden_score, int_score.reshape(-1)).sum()   │
+[stderr]: │   459 │   │   │   else:                                                                          │
+[stderr]: │   460 │   │   │   │   num_parameters += torch.sum(torch.matmul(hidden_score.reshape(1, -1, 1),   │
+[stderr]: │   461 │   │   │   │   num_parameters += torch.sum(torch.matmul(hidden_score.reshape(1, -1, 1),   │
+[stderr]: ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+[stderr]: OutOfMemoryError: CUDA out of memory. Tried to allocate 2.69 GiB (GPU 2; 23.57 GiB total capacity; 17.15 GiB already allocated; 2.33 GiB free; 20.67 GiB reserved in total by PyTorch) If reserved memory is >> 
+[stderr]: allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+t call functions when jit is used[0m                                          [31m│[0m
+[stderr]: [31m│[0m   [2m1503 [0m[2m│   │   [0mfull_backward_hooks, non_full_backward_hooks = [], []                             [31m│[0m
+[stderr]: [31m│[0m   [2m1504 [0m[2m│   │   [0mbackward_pre_hooks = []                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/LLM-Shearing/llmshearing/models/[0m[1mcomposer_llama.py[0m:92 in forward             [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m 89 [0m[2m│   │   [0m[94mif[0m pruned_steps [95mis[0m [95mnot[0m [94mNone[0m:                                                       [31m│[0m
+[stderr]: [31m│[0m   [2m 90 [0m[2m│   │   │   [0mpruned_steps = pruned_steps[[94m0[0m].item()                                          [31m│[0m
+[stderr]: [31m│[0m   [2m 91 [0m[2m│   │   [0mzs = {key: batch[key] [94mfor[0m key [95min[0m batch [94mif[0m [33m"[0m[33m_z[0m[33m"[0m [95min[0m key}                             [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m 92 [2m│   │   [0mmodel_output = [1;4;96mself[0m[1;4m.model(input_ids=input_ids, key_padding_mask=key_padding_mask[0m   [31m│[0m
+[stderr]: [31m│[0m   [2m 93 [0m[2m│   │   [0m[94mreturn[0m model_output                                                                [31m│[0m
+[stderr]: [31m│[0m   [2m 94 [0m[2m│   [0m                                                                                       [31m│[0m
+[stderr]: [31m│[0m   [2m 95 [0m[2m│   [0m[94mdef[0m[90m [0m[92meval_forward[0m([96mself[0m, batch, outputs=[94mNone[0m):                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/nn/modules/[0m[1mmodule[0m [31m│[0m
+[stderr]: [31m│[0m [1m.py[0m:1501 in _call_impl                                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m1498 [0m[2m│   │   [0m[94mif[0m [95mnot[0m ([96mself[0m._backward_hooks [95mor[0m [96mself[0m._backward_pre_hooks [95mor[0m [96mself[0m._forward_hooks   [31m│[0m
+[stderr]: [31m│[0m   [2m1499 [0m[2m│   │   │   │   [0m[95mor[0m _global_backward_pre_hooks [95mor[0m _global_backward_hooks                   [31m│[0m
+[stderr]: [31m│[0m   [2m1500 [0m[2m│   │   │   │   [0m[95mor[0m _global_forward_hooks [95mor[0m _global_forward_pre_hooks):                   [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m1501 [2m│   │   │   [0m[94mreturn[0m [1;4mforward_call(*args, **kwargs)[0m                                          [31m│[0m
+[stderr]: [31m│[0m   [2m1502 [0m[2m│   │   [0m[2m# Do not call functions when jit is used[0m                                          [31m│[0m
+[stderr]: [31m│[0m   [2m1503 [0m[2m│   │   [0mfull_backward_hooks, non_full_backward_hooks = [], []                             [31m│[0m
+[stderr]: [31m│[0m   [2m1504 [0m[2m│   │   [0mbackward_pre_hooks = []                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/distributed/fsdp/[0m [31m│[0m
+[stderr]: [31m│[0m [1mfully_sharded_data_parallel.py[0m:748 in forward                                                    [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m 745 [0m[2m│   │   │   │   │   [0m[33m"[0m[33mExpected `FlatParameter` to be on the compute device [0m[33m"[0m               [31m│[0m
+[stderr]: [31m│[0m   [2m 746 [0m[2m│   │   │   │   │   [0m[33mf[0m[33m"[0m[33m{[0m[96mself[0m.compute_device[33m}[0m[33m but got [0m[33m{[0mhandle.flat_param.device[33m}[0m[33m"[0m,          [31m│[0m
+[stderr]: [31m│[0m   [2m 747 [0m[2m│   │   │   │   [0m)                                                                         [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m 748 [2m│   │   │   [0moutput = [1;4;96mself[0m[1;4m._fsdp_wrapped_module(*args, **kwargs)[0m                           [31m│[0m
+[stderr]: [31m│[0m   [2m 749 [0m[2m│   │   │   [0m[94mreturn[0m _post_forward([96mself[0m, [96mself[0m._handles, reshard_fn, [96mself[0m, unused, output)   [31m│[0m
+[stderr]: [31m│[0m   [2m 750 [0m[2m│   [0m                                                                                      [31m│[0m
+[stderr]: [31m│[0m   [2m 751 [0m[2m│   [0m[1;95m@staticmethod[0m                                                                         [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/nn/modules/[0m[1mmodule[0m [31m│[0m
+[stderr]: [31m│[0m [1m.py[0m:1501 in _call_impl                                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m1498 [0m[2m│   │   [0m[94mif[0m [95mnot[0m ([96mself[0m._backward_hooks [95mor[0m [96mself[0m._backward_pre_hooks [95mor[0m [96mself[0m._forward_hooks   [31m│[0m
+[stderr]: [31m│[0m   [2m1499 [0m[2m│   │   │   │   [0m[95mor[0m _global_backward_pre_hooks [95mor[0m _global_backward_hooks                   [31m│[0m
+[stderr]: [31m│[0m   [2m1500 [0m[2m│   │   │   │   [0m[95mor[0m _global_forward_hooks [95mor[0m _global_forward_pre_hooks):                   [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m1501 [2m│   │   │   [0m[94mreturn[0m [1;4mforward_call(*args, **kwargs)[0m                                          [31m│[0m
+[stderr]: [31m│[0m   [2m1502 [0m[2m│   │   [0m[2m# Do not call functions when jit is used[0m                                          [31m│[0m
+[stderr]: [31m│[0m   [2m1503 [0m[2m│   │   [0mfull_backward_hooks, non_full_backward_hooks = [], []                             [31m│[0m
+[stderr]: [31m│[0m   [2m1504 [0m[2m│   │   [0mbackward_pre_hooks = []                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/LLM-Shearing/llmshearing/models/[0m[1mcomposer_llama.py[0m:330 in forward            [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m327 [0m[2m│   │   [0mlogits = [96mself[0m.transformer.output(x)                                                [31m│[0m
+[stderr]: [31m│[0m   [2m328 [0m[2m│   │   [0m                                                                                   [31m│[0m
+[stderr]: [31m│[0m   [2m329 [0m[2m│   │   [0m[94mif[0m [96mself[0m.l0_module [95mis[0m [95mnot[0m [94mNone[0m:                                                     [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m330 [2m│   │   │   [0ml0_output = [1;4;96mself[0m[1;4m.l0_module(calculate_lagrangian=[0m[1;4;94mTrue[0m[1;4m, pruned_steps=pruned_st[0m   [31m│[0m
+[stderr]: [31m│[0m   [2m331 [0m[2m│   │   [0m                                                                                   [31m│[0m
+[stderr]: [31m│[0m   [2m332 [0m[2m│   │   [0m[94mreturn[0m {[33m"[0m[33mlogits[0m[33m"[0m: logits, [33m"[0m[33ml0_output[0m[33m"[0m: l0_output, [33m"[0m[33mzs[0m[33m"[0m: zs}                        [31m│[0m
+[stderr]: [31m│[0m   [2m333 [0m                                                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/anaconda3/envs/dibk311/lib/python3.11/site-packages/torch/nn/modules/[0m[1mmodule[0m [31m│[0m
+[stderr]: [31m│[0m [1m.py[0m:1501 in _call_impl                                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m1498 [0m[2m│   │   [0m[94mif[0m [95mnot[0m ([96mself[0m._backward_hooks [95mor[0m [96mself[0m._backward_pre_hooks [95mor[0m [96mself[0m._forward_hooks   [31m│[0m
+[stderr]: [31m│[0m   [2m1499 [0m[2m│   │   │   │   [0m[95mor[0m _global_backward_pre_hooks [95mor[0m _global_backward_hooks                   [31m│[0m
+[stderr]: [31m│[0m   [2m1500 [0m[2m│   │   │   │   [0m[95mor[0m _global_forward_hooks [95mor[0m _global_forward_pre_hooks):                   [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m1501 [2m│   │   │   [0m[94mreturn[0m [1;4mforward_call(*args, **kwargs)[0m                                          [31m│[0m
+[stderr]: [31m│[0m   [2m1502 [0m[2m│   │   [0m[2m# Do not call functions when jit is used[0m                                          [31m│[0m
+[stderr]: [31m│[0m   [2m1503 [0m[2m│   │   [0mfull_backward_hooks, non_full_backward_hooks = [], []                             [31m│[0m
+[stderr]: [31m│[0m   [2m1504 [0m[2m│   │   [0mbackward_pre_hooks = []                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/LLM-Shearing/llmshearing/models/[0m[1ml0_module.py[0m:511 in forward                 [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m508 [0m[2m│   [0m[94mdef[0m[90m [0m[92mforward[0m([96mself[0m, calculate_lagrangian: [96mbool[0m = [94mFalse[0m, pruned_steps: [96mint[0m = [94m0[0m):          [31m│[0m
+[stderr]: [31m│[0m   [2m509 [0m[2m│   │   [0m[96mself[0m.constrain_parameters()                                                        [31m│[0m
+[stderr]: [31m│[0m   [2m510 [0m[2m│   │   [0m[94mif[0m calculate_lagrangian:                                                           [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m511 [2m│   │   │   [0m[94mreturn[0m [1;4;96mself[0m[1;4m.lagrangian_regularization(pruned_steps)[0m                            [31m│[0m
+[stderr]: [31m│[0m   [2m512 [0m[2m│   │   [0m                                                                                   [31m│[0m
+[stderr]: [31m│[0m   [2m513 [0m[2m│   │   [0mzs = {[33mf[0m[33m"[0m[33m{[0mpruning_module[33m}[0m[33m_z[0m[33m"[0m: [] [94mfor[0m pruning_module [95min[0m [96mself[0m.pruning_modules}        [31m│[0m
+[stderr]: [31m│[0m   [2m514 [0m                                                                                           [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/LLM-Shearing/llmshearing/models/[0m[1ml0_module.py[0m:483 in                         [31m│[0m
+[stderr]: [31m│[0m lagrangian_regularization                                                                        [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m480 [0m[2m│   │   [0m                                                                                   [31m│[0m
+[stderr]: [31m│[0m   [2m481 [0m[2m│   │   [0mtarget_sparsity = [96mself[0m.get_target_sparsity(pruned_steps, [96mself[0m.target_sparsity)     [31m│[0m
+[stderr]: [31m│[0m   [2m482 [0m[2m│   │   [0mexpected_scores, expected_sparsitys = [96mself[0m.calculate_expected_score_sparsity()     [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m483 [2m│   │   [0mexpected_size = [1;4;96mself[0m[1;4m.get_expected_num_params(expected_scores)[0m [2m#! calculate \bar [0m   [31m│[0m
+[stderr]: [31m│[0m   [2m484 [0m[2m│   │   [0mexpected_sparsity = [94m1[0m - expected_size / [96mself[0m.prunable_model_size                   [31m│[0m
+[stderr]: [31m│[0m   [2m485 [0m[2m│   │   [0m                                                                                   [31m│[0m
+[stderr]: [31m│[0m   [2m486 [0m[2m│   │   [0mreturn_v = {}                                                                      [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m [2m/home/dibaeck/sketch/LLM-Shearing/llmshearing/models/[0m[1ml0_module.py[0m:458 in get_expected_num_params [31m│[0m
+[stderr]: [31m│[0m                                                                                                  [31m│[0m
+[stderr]: [31m│[0m   [2m455 [0m[2m│   │   │   [0m                                                                               [31m│[0m
+[stderr]: [31m│[0m   [2m456 [0m[2m│   │   │   [0m[94mif[0m qk_score [95mis[0m [94mNone[0m:                                                           [31m│[0m
+[stderr]: [31m│[0m   [2m457 [0m[2m│   │   │   │   [0mnum_parameters += torch.outer(hidden_score, head_score.reshape(-[94m1[0m)).sum(   [31m│[0m
+[stderr]: [31m│[0m [31m❱ [0m458 [2m│   │   │   │   [0mnum_parameters += [1;4mtorch.outer(hidden_score, int_score.reshape(-[0m[1;4;94m1[0m[1;4m))[0m.sum()   [31m│[0m
+[stderr]: [31m│[0m   [2m459 [0m[2m│   │   │   [0m[94melse[0m:                                                                          [31m│[0m
+[stderr]: [31m│[0m   [2m460 [0m[2m│   │   │   │   [0mnum_parameters += torch.sum(torch.matmul(hidden_score.reshape([94m1[0m, -[94m1[0m, [94m1[0m),   [31m│[0m
+[stderr]: [31m│[0m   [2m461 [0m[2m│   │   │   │   [0mnum_parameters += torch.sum(torch.matmul(hidden_score.reshape([94m1[0m, -[94m1[0m, [94m1[0m),   [31m│[0m
+[stderr]: [31m╰──────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[stderr]: [1;91mOutOfMemoryError: [0mCUDA out of memory. Tried to allocate [1;36m2.69[0m GiB [1m([0mGPU [1;36m0[0m; [1;36m23.57[0m GiB total capacity; [1;36m17.14[0m GiB already allocated; [1;36m2.33[0m GiB free; [1;36m20.67[0m GiB reserved in total by PyTorch[1m)[0m If reserved memory is >> 
+[stderr]: allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

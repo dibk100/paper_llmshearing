@@ -1,0 +1,335 @@
+{
+    "os": "Linux-5.15.0-136-generic-x86_64-with-glibc2.31",
+    "python": "3.11.11",
+    "heartbeatAt": "2025-04-15T04:33:43.428819",
+    "startedAt": "2025-04-15T04:33:43.196951",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "/home/dibaeck/sketch/LLM-Shearing/llmshearing/configs/llama2/7b.yaml",
+        "run_name=llama2_7b_pruning_scaling_doremi_to2.7b_sl4096",
+        "data_local=/home/dibaeck/sketch/LLM-Shearing/llmshearing/data/mds_sample_redpajama/for_prune",
+        "eval_loader.dataset.split=eval_merge",
+        "global_train_batch_size=32",
+        "device_train_microbatch_size=4",
+        "device_eval_batch_size=8",
+        "max_seq_len=4096",
+        "max_duration=3200ba",
+        "eval_first=false",
+        "scheduler.t_warmup=320ba",
+        "save_folder=/home/dibaeck/sketch/LLM-Shearing/out/test_release_pruning_full/llama2_7b_pruning_scaling_doremi_to2.7b_sl4096",
+        "loggers.wandb.init_kwargs.dir=/home/dibaeck/sketch/LLM-Shearing/out/test_release_pruning_full/llama2_7b_pruning_scaling_doremi_to2.7b_sl4096",
+        "eval_interval=50ba",
+        "save_interval=3200ba",
+        "optimizer.lr=1e-4",
+        "optimizer.lag_lr=1.0",
+        "model.path=/home/dibaeck/sketch/LLM-Shearing/llmshearing/models/Llama-2-7b-composer/state_dict.pt",
+        "model.l0_module.lagrangian_warmup_steps=640ba",
+        "model.l0_module.pruning_modules=[head,intermediate,layer,hidden]",
+        "model.l0_module.eval_target_model=false",
+        "model.l0_module.target_model.d_model=2560",
+        "model.l0_module.target_model.n_heads=20",
+        "model.l0_module.target_model.n_layers=32",
+        "model.l0_module.target_model.intermediate_size=6912",
+        "callbacks.data_loading.dynamic=True",
+        "callbacks.data_loading.set_names=[cc,github,book,stackexchange,wiki,arxiv,c4-rp]",
+        "callbacks.data_loading.proportion=[0.67,0.045,0.045,0.02,0.045,0.025,0.15]",
+        "callbacks.data_loading.update_type=doremi",
+        "callbacks.data_loading.target_loss=[1.8712,0.6883,2.0325,1.5353,1.6297,1.3560,2.0328]",
+        "train_loader.num_workers=0",
+        "train_loader.prefetch_factor=null",
+        "train_loader.persistent_workers=false",
+        "autoresume=false"
+    ],
+    "state": "running",
+    "program": "/home/dibaeck/sketch/LLM-Shearing/llmshearing/train.py",
+    "codePathLocal": "llmshearing/train.py",
+    "codePath": "llmshearing/train.py",
+    "git": {
+        "remote": "https://github.com/dibk100/paper_llmshearing.git",
+        "commit": "bfa5adbdf86d9f461b62739c9ded8b2bc4ef21df"
+    },
+    "email": "dibk_100@naver.com",
+    "root": "/home/dibaeck/sketch/LLM-Shearing",
+    "host": "lab117",
+    "username": "dibaeck",
+    "executable": "/home/dibaeck/sketch/anaconda3/envs/dibk311/bin/python",
+    "cpu_count": 24,
+    "cpu_count_logical": 48,
+    "cpu_freq": {
+        "current": 2502.078375,
+        "min": 1000.0,
+        "max": 3200.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2699.998,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.001,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.001,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.001,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.999,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.995,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2700.001,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2699.998,
+            "min": 1000.0,
+            "max": 3200.0
+        },
+        {
+            "current": 2200.0,
+            "min": 1000.0,
+            "max": 3200.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1832.2072448730469,
+            "used": 731.6115455627441
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        }
+    ],
+    "memory": {
+        "total": 187.52166748046875
+    }
+}
